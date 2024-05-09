@@ -18,6 +18,8 @@ jobs:
 
     - name: Setup buildifier
       uses: jbajic/setup-buildifier@v1
+      with:
+        version: 7.1.1
 
     - run: pip install ruff
     - name: Check formatting of Python files
