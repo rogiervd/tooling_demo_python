@@ -1,5 +1,5 @@
-load("@python_packages//:requirements.bzl", "requirement")
 load("@caseyduquettesc_rules_python_pytest//python_pytest:defs.bzl", "py_pytest_test")
+load("@python_packages//:requirements.bzl", "requirement")
 
 # Unit test that runs as an executable.
 py_test(
