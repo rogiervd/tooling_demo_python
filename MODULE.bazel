@@ -4,18 +4,16 @@ bazel_dep(name = "rules_python", version = "0.31.0")
 bazel_dep(name = "caseyduquettesc_rules_python_pytest", version = "0.0.0")
 
 pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
-
 pip.parse(
     hub_name = "python_packages",
     python_version = "3.11",
     # requirements_lock.txt is generated with: bazel run //:requirements.update
     requirements_lock = "//:requirements_lock.txt",
 )
-
 use_repo(pip, "python_packages")
 
 git_override(
-    commit = "7c07b3957e7756610b0195908cb01ec20a80125a",
     module_name = "caseyduquettesc_rules_python_pytest",
+    commit = "7c07b3957e7756610b0195908cb01ec20a80125a",
     remote = "https://github.com/caseyduquettesc/rules_python_pytest.git",
 )
