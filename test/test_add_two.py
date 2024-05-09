@@ -2,7 +2,7 @@
 Test add_two.py using pytest.
 """
 
-import pytest # type: ignore
+import pytest  # type: ignore
 
 from compute import AddTwo
 
