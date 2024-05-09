@@ -1,0 +1,9 @@
+# The main library that this repo pretends to provide.
+py_library(
+    name = "compute",
+    srcs = [
+        "__init__.py",
+        "add_two.py",
+    ],
+    visibility = ["//visibility:public"],
+)

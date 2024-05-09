@@ -1,0 +1,25 @@
+load("@python_packages//:requirements.bzl", "requirement")
+load("@caseyduquettesc_rules_python_pytest//python_pytest:defs.bzl", "py_pytest_test")
+
+# Unit test that runs as an executable.
+py_test(
+    name = "unit_test",
+    size = "small",
+    srcs = ["unit_test.py"],
+    deps = [
+        requirement("pyyaml"),
+    ],
+)
+
+# Unit test that runs under pytest.
+# These test files are not executable.
+# Unlike normally with pytest, each file needs to be specified individually.
+py_pytest_test(
+    name = "test_add_two",
+    size = "small",
+    srcs = ["test_add_two.py"],
+    deps = [
+        requirement("pytest"),
+        "//compute",
+    ],
+)

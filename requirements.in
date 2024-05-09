@@ -1,0 +1,7 @@
+# Put actual requirements here.
+# Then touch requirements_lock.txt.
+# Then call: bazel run //:requirements.update
+# This will generate requirements_lock.txt.
+pyyaml>=6
+types-PyYAML>=6
+pytest>=8
