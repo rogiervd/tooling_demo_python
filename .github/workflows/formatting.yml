@@ -1,0 +1,23 @@
+name: Check formatting
+
+on:
+  push:
+    branches: [ main, develop, test-github-actions ]
+  pull_request:
+    branches: [ main, develop, test-github-actions ]
+
+  workflow_dispatch:
+
+jobs:
+  formatting:
+    # Use the standard clang-format on the operation system.
+    runs-on: ubuntu-22.04
+        
+    steps:
+    - uses: actions/checkout@v4
+    - name: Formatting
+      shell: bash
+      # This should show incorrectly formatted code, and return with a nonzero
+      # exit code if there are formatting problems.
+      run: ruff format --check
+      run: buildifier -mode=check -lint=warn -r .
