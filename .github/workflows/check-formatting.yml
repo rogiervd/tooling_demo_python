@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  formatting:
+  check-formatting:
     # Use the standard clang-format on the operation system.
     runs-on: ubuntu-22.04
         
@@ -22,6 +22,7 @@ jobs:
         version: 7.1.1
 
     - run: pip install ruff
+
     - name: Check formatting of Python files
       run: ruff format --check
     - name: Check formatting of Bazel files
