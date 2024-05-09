@@ -17,5 +17,6 @@ jobs:
     - uses: actions/checkout@v4
       # This should show incorrectly formatted code, and return with a nonzero
       # exit code if there are formatting problems.
+    - run: sudo apt install ruff
     - run: ruff format --check
     - run: buildifier -mode=check -lint=warn -r .
