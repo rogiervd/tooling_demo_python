@@ -15,8 +15,10 @@ jobs:
         
     steps:
     - uses: actions/checkout@v4
-      # This should show incorrectly formatted code, and return with a nonzero
-      # exit code if there are formatting problems.
+    # Download buildifier.
+    - uses: bazel-contrib/setup-bazel@0.8.1
+    # This should show incorrectly formatted code, and return with a nonzero
+    # exit code if there are formatting problems.
     - run: pip install ruff
     - run: ruff format --check
     - run: buildifier -mode=check -lint=warn -r .
