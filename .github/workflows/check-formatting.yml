@@ -1,0 +1,29 @@
+name: Check formatting
+
+on:
+  push:
+    branches: [ main, develop, test-github-actions ]
+  pull_request:
+    branches: [ main, develop, test-github-actions ]
+
+  workflow_dispatch:
+
+jobs:
+  check-formatting:
+    # Use the standard clang-format on the operation system.
+    runs-on: ubuntu-22.04
+        
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup buildifier
+      uses: jbajic/setup-buildifier@v1
+      with:
+        version: 7.1.1
+
+    - run: pip install ruff
+
+    - name: Check formatting of Python files
+      run: ruff format --check
+    - name: Check formatting of Bazel files
+      run: buildifier -mode=check -lint=warn -r .
