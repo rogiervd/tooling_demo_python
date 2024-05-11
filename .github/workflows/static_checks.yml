@@ -1,0 +1,39 @@
+name: Static checks
+
+on:
+  push:
+    branches: [ main, develop, test-github-actions ]
+  pull_request:
+    branches: [ main, develop, test-github-actions ]
+
+  workflow_dispatch:
+
+jobs:
+  static_checks:
+    # It probably is only necessary to run this on one operating system.
+    runs-on: ubuntu-22.04
+        
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup buildifier
+      uses: jbajic/setup-buildifier@v1
+      with:
+        version: 7.1.1
+
+    - run: pip install ruff mypy pytype
+
+    - name: Check Bazel files
+      run: buildifier -mode=off -lint=warn -r .
+
+    - name: Check Python files
+      run: ruff check
+
+    # Ideally type checking should be done under Bazel, so that all libraries
+    # can be made available.
+    # However, attempts to do this have failed so far.
+    - name: Type checking with mypy
+      run: mypy compute/ test/
+
+    - name: Type checking with pytype
+      run: pytype compute/ test/
