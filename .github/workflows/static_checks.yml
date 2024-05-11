@@ -24,7 +24,7 @@ jobs:
     - run: pip install ruff mypy pytype
 
     - name: Check Bazel files
-      run: buildifier -mode=off -lint=warn -r .
+      run: buildifier -mode=check -lint=warn -r .
 
     - name: Check Python files
       run: ruff check
