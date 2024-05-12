@@ -8,6 +8,7 @@ py_test(
     srcs = ["unit_test.py"],
     deps = [
         requirement("pyyaml"),
+        requirement("types-PyYAML"),
     ],
 )
 
@@ -20,6 +21,6 @@ py_pytest_test(
     srcs = ["test_add_two.py"],
     deps = [
         requirement("pytest"),
-        "//compute",
+        "//:compute",
     ],
 )

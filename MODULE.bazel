@@ -17,3 +17,12 @@ git_override(
     commit = "7c07b3957e7756610b0195908cb01ec20a80125a",
     remote = "https://github.com/caseyduquettesc/rules_python_pytest.git",
 )
+
+
+bazel_dep(name = "mypy_integration", version = "0.0.0")
+
+git_override(
+    commit = "20dea81926d93ac14ec25915a638e7772644a702",
+    module_name = "mypy_integration",
+    remote = "https://github.com/bazel-contrib/bazel-mypy-integration.git",
+)

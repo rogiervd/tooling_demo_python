@@ -1,9 +1,23 @@
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 
+alias(
+    name = "compute",
+    actual = "//src:compute",
+    visibility = ["//visibility:public"],
+)
+
 # This does something with Python dependencies using pip.
 compile_pip_requirements(
     name = "requirements",
     src = "requirements.in",
     requirements_txt = "requirements_lock.txt",
     # requirements_windows = "requirements_windows.txt",
+)
+
+load("@python_packages//:requirements.bzl", "requirement")
+
+alias(
+    name = "mypy",
+    actual = requirement("mypy"),
+    visibility = ["//visibility:public"],
 )
