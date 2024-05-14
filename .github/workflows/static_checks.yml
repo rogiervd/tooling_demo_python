@@ -33,7 +33,7 @@ jobs:
     # can be made available.
     # However, attempts to do this have failed so far.
     - name: Type checking with mypy
-      run: mypy --install-types compute/ test/
+      run: mypy --install-types --non-interactive compute/ test/
 
     - name: Type checking with pytype
       run: pytype compute/ test/
