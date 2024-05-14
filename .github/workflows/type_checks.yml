@@ -24,7 +24,4 @@ jobs:
         repository-cache: true
     # TODO there could be an argument for putting this in .bazelrc so that this
     # is always run when building.
-    - run: bazel test --@rules_mypy//config:mypy_config=//:.mypy.ini \
-               --aspects @rules_mypy//rules/mypy:mypy.bzl%mypy_aspect \
-               --output_groups=mypy \
-               //test:all
+    - run: bazel test --@rules_mypy//config:mypy_config=//:.mypy.ini --aspects @rules_mypy//rules/mypy:mypy.bzl%mypy_aspect --output_groups=mypy //test:all
