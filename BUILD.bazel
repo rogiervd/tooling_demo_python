@@ -1,3 +1,7 @@
+load("@com_alexmirrington_rules_mypy//:pip.bzl", "rules_mypy_py_deps")
+load("@com_alexmirrington_rules_mypy//:repositories.bzl", "rules_mypy_repos")
+load("@python_3_11//:defs.bzl", "interpreter")
+load("@rules_mypy_pip_deps//:requirements.bzl", install_rules_mypy_pip_deps = "install_deps")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 
 # This does something with Python dependencies using pip.
@@ -7,3 +11,17 @@ compile_pip_requirements(
     requirements_txt = "requirements_lock.txt",
     # requirements_windows = "requirements_windows.txt",
 )
+
+rules_mypy_repos()
+
+python_register_toolchains(
+    name = "python_3_11",
+    python_version = "3.11",
+)
+
+rules_mypy_py_deps(
+    python_interpreter_target = interpreter,
+    requirements_lock = "//:requirements_lock.txt",
+)
+
+install_rules_mypy_pip_deps()
