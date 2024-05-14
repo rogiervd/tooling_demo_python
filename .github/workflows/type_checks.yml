@@ -1,0 +1,27 @@
+name: Run type checks
+
+on:
+  push:
+    branches: [ main, develop, test-github-actions ]
+  pull_request:
+    branches: [ main, develop, test-github-actions ]
+
+  workflow_dispatch:
+
+jobs:
+  type_checks:
+    runs-on: ubuntu-22.04
+        
+    steps:
+    - uses: actions/checkout@v4
+    - uses: bazel-contrib/setup-bazel@0.8.1
+      with:
+        # Avoid downloading Bazel every time.
+        bazelisk-cache: true
+        # Store build cache per workflow.
+        disk-cache: ${{ github.workflow }}
+        # Share repository cache between workflows.
+        repository-cache: true
+    # TODO there could be an argument for putting this in .bazelrc so that this
+    # is always run when building.
+    - run: bazel test //test:all --aspects @mypy_integration//:mypy.bzl%mypy_aspect --output_groups=+mypy --@mypy_integration//:mypy=//:mypy

@@ -2,8 +2,9 @@
 py_library(
     name = "compute",
     srcs = [
-        "__init__.py",
-        "add_two.py",
+        "compute/__init__.py",
+        "compute/add_two.py",
     ],
+    imports = ["."],
     visibility = ["//visibility:public"],
 )
