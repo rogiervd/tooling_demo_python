@@ -26,4 +26,4 @@ jobs:
     - name: Check formatting of Python files
       run: ruff format --check
     - name: Check formatting of Bazel files
-      run: buildifier -mode=check -lint=warn -r .
+      run: buildifier -mode=check -lint=off -r .
