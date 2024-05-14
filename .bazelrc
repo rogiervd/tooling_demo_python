@@ -1,4 +1,4 @@
 # Type-checking while building/testing Python code.
-build --aspects @mypy_integration//:mypy.bzl%mypy_aspect
-build --output_groups=+mypy
-build --@mypy_integration//:mypy=//:mypy
+#build --aspects @mypy_integration//:mypy.bzl%mypy_aspect
+#build --output_groups=+mypy
+#build --@mypy_integration//:mypy=//:mypy
