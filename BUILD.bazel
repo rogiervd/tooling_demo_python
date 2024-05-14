@@ -1,3 +1,4 @@
+load("@python_packages//:requirements.bzl", "requirement")
 load("@rules_python//python:pip.bzl", "compile_pip_requirements")
 
 alias(
@@ -13,8 +14,6 @@ compile_pip_requirements(
     requirements_txt = "requirements_lock.txt",
     # requirements_windows = "requirements_windows.txt",
 )
-
-load("@python_packages//:requirements.bzl", "requirement")
 
 alias(
     name = "mypy",
