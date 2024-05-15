@@ -10,7 +10,6 @@ on:
 
 jobs:
   check-formatting:
-    # Use the standard clang-format on the operation system.
     runs-on: ubuntu-22.04
         
     steps:
