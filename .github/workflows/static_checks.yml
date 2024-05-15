@@ -36,4 +36,4 @@ jobs:
       run: mypy --install-types --non-interactive compute/ test/
 
     - name: Type checking with pytype
-      run: pytype compute/ test/
+      run: pytype --keep-going compute/ test/
