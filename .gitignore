@@ -1,0 +1,10 @@
+# Bazel-related files
+/bazel-*
+
+# Python-related files
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytype/
+.ruff_cache/
+.pytest_cache/
