@@ -23,3 +23,7 @@ jobs:
         # Share repository cache between workflows.
         repository-cache: true
     - run: bazel test //test:all
+
+    # Check building the documentation.
+    - name: Check building documentation
+      run: bazel build //doc:documentation

@@ -1,0 +1,29 @@
+load("@python_packages//:requirements.bzl", "requirement")
+load("@rules_python//sphinxdocs:sphinx.bzl", "sphinx_build_binary", "sphinx_docs")
+load(":sphinx.bzl", "sphinx_configuration")
+
+sphinx_configuration(
+    name = "conf.py",
+    copyright = "2024-2025 Rogier van Dalen",
+    main_input_file = "index",
+    project_name = "Tooling demo for Python",
+    template = "conf.py.tpl",
+    version = "0.1",
+)
+
+sphinx_build_binary(
+    name = "sphinx-build",
+    deps = [requirement("sphinx")],
+)
+
+sphinx_docs(
+    name = "documentation",
+    srcs = [
+        "index.rst",
+        "reference/api.rst",
+        "//compute",
+    ],
+    config = "conf.py",
+    formats = ["html"],
+    sphinx = "sphinx-build",
+)
