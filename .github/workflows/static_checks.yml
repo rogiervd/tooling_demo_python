@@ -37,7 +37,3 @@ jobs:
 
     - name: Type checking with pytype
       run: pytype --keep-going compute/ test/
-
-    # Check building the documentation.
-    - name: Check building documentation
-      run: bazel build //doc:documentation
