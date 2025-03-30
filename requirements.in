@@ -5,3 +5,4 @@
 pyyaml>=6
 types-PyYAML>=6
 pytest>=8
+sphinx>=5
