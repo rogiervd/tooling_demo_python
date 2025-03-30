@@ -3,7 +3,6 @@ module(name = "tooling_demo_python")
 # Depend on rules_python explicitly so a version can be chosen that has
 # sphinxdocs in it.
 bazel_dep(name = "rules_python", version = "1.0.0")
-
 bazel_dep(name = "caseyduquettesc_rules_python_pytest", version = "0.0.0")
 
 pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
